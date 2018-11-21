@@ -8,8 +8,12 @@ import { Header } from './common/Header';
 import { Footer } from './common/Footer';
 // import { UserListItem } from './users/UserListItem';
 
+import { fetchUsers } from '../services/UserService'
 
-const App = ({usersData}) => {
+
+const App = () => {
+  const users = fetchUsers();
+  
   return (
     < Fragment >
         <header className="App-header">
@@ -17,7 +21,7 @@ const App = ({usersData}) => {
         </header>
       < main className="App" >
 
-        <UsersList listOfUsers={usersData} />
+        <UsersList listOfUsers={users} />
       </main >
       <footer className="App-footer">
         <Footer />
