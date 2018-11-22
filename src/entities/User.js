@@ -14,6 +14,7 @@ class User {
 
         return splited.join("") + '@' + emailParts[1];
     }
+
 }
 
 export default User

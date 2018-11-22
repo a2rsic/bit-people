@@ -13,7 +13,6 @@ import { fetchUsersData } from '../services/UserService'
 
 
 class App extends React.Component {
-
   constructor(props) {
     super(props)
 
@@ -27,18 +26,12 @@ class App extends React.Component {
   componentDidMount() {
     fetchUsersData()
       .then(usersArray => {
-
         this.setState({ users: usersArray })
       });
-    // const users = loadUsersData();
   }
 
-  onChangeViewMode = (event) => {
-    const isGrid = !this.state.isGrid
-
-    this.setState({
-      isGrid
-    })
+  onChangeViewMode = () => {
+    this.setState(prevState => ({ isGrid: !prevState.isGrid }));
   }
 
   render() {
@@ -46,12 +39,12 @@ class App extends React.Component {
 
     return (
       < Fragment >
-        <header className="App-header">
-          < Header />
 
-        </header>
+        <Header onGridChange={this.onChangeViewMode} />
+
+        {/* <input type="button" value="click" onClick={this.onChangeViewMode} /> */}
+
         < main className="App" >
-          <input type="button" value="click" onClick={this.onChangeViewMode} />
 
           <UsersList listOfUsers={this.state.users} isGrid={this.state.isGrid} />
         </main >

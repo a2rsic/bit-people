@@ -9,7 +9,7 @@ const fetchUsersData = () => {
             return response.json()
         })
         .then((response) => {
-           return response.results
+            return response.results
         })
         .then((rawUsers) => {
             const users = rawUsers.map((rawUser) => {
@@ -17,10 +17,10 @@ const fetchUsersData = () => {
                     rawUser.picture.large,
                     rawUser.name.first,
                     rawUser.email,
-                    rawUser.dob.age
+                    rawUser.dob.date.toLocaleString('en-GB').slice(0, 10)
                 )
             });
-        
+
             return users;
         })
 }

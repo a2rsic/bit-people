@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const UserCardItem = ({ userPicture, userName, userEmail, userAge }) => {
   return (
-    <div className="col s12 m6">
+    <div className="col s12 m4">
       <div className="card">
         <div className="card-image">
           <img src={userPicture} alt="" />
@@ -22,7 +22,7 @@ UserCardItem.propTypes = {
   userName: PropTypes.string,
   userPicture: PropTypes.string,
   userEmail: PropTypes.string,
-  userAge: PropTypes.number
+  userAge: PropTypes.string
 }
 
 export { UserCardItem }
