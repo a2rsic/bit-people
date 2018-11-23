@@ -17,9 +17,8 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      isGrid: true,
+      isGrid: false,
       users: []
-
     }
   }
 
@@ -29,6 +28,7 @@ class App extends React.Component {
         this.setState({ users: usersArray })
       });
   }
+
 
   onChangeViewMode = () => {
     this.setState(prevState => ({ isGrid: !prevState.isGrid }));
@@ -40,7 +40,7 @@ class App extends React.Component {
     return (
       < Fragment >
 
-        <Header onGridChange={this.onChangeViewMode} />
+        <Header onGridChange={this.onChangeViewMode} isGrid={this.state.isGrid} />
 
         {/* <input type="button" value="click" onClick={this.onChangeViewMode} /> */}
 
