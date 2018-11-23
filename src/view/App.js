@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from 'react';
 // import PropTypes from 'prop-types'
-
 import './App.css';
 import { UsersList } from './users/UsersList';
 import { UserCardItem } from './users/UserCardItem';
@@ -22,16 +21,27 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
+  fetchUsers = () => {
     fetchUsersData()
       .then(usersArray => {
         this.setState({ users: usersArray })
       });
+
+  }
+
+  componentDidMount() {
+    this.fetchUsers()
   }
 
 
   onChangeViewMode = () => {
     this.setState(prevState => ({ isGrid: !prevState.isGrid }));
+  }
+
+
+
+  onRefreshUsers = () => {
+    this.fetchUsers()
   }
 
   render() {
@@ -40,7 +50,7 @@ class App extends React.Component {
     return (
       < Fragment >
 
-        <Header onGridChange={this.onChangeViewMode} isGrid={this.state.isGrid} />
+        <Header onGridChange={this.onChangeViewMode} isGrid={this.state.isGrid} onRefresh={this.onRefreshUsers} />
 
         {/* <input type="button" value="click" onClick={this.onChangeViewMode} /> */}
 

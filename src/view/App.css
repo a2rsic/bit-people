@@ -4,3 +4,7 @@
 .material-icons {
    margin-right: 20px;
 }
+  .title {
+   position: absolute;
+   left: 50%;
+  }
